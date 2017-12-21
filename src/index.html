@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Väderljud</title>
+    <link rel="stylesheet" href="mainwindow.css">
+  </head>
+  <body>
+    <p id="websocket-status">Connection status: not connected</p>
+    <dl id="weather-paragraph" class="table-display">No data received</dl>
+    <script>
+      // You can also require other files to run in this process
+      require('./renderer.js')
+    </script>
+  </body>
+</html>
