@@ -77,11 +77,9 @@ const osc = new OSC({
 });
 
 let ws = null;
-// let server = 'wss://weather-sound-webapp.herokuapp.com'
-let server = process.env.SERVER; //'ws://localhost';
-// let server = 'ws://echo.websocket.org/'
+let server = process.env.SERVER;
 let port = process.env.PORT;
-let clientToken = process.env.ELECTRONAPPTOKEN; //'electron-app-456';
+let clientToken = process.env.ELECTRONAPPTOKEN;
 
 function start(){
 
@@ -97,10 +95,10 @@ function start(){
 function openWebsocket(){
   try{
     console.log('trying to create a websocket');
-    if(mainWindowLoaded){
-      mainWindow.webContents.send('websocketStatus', `trying to connect to <strong>${server}</strong>`);
-    }
     let url = server + ':' + port + '?token=' + clientToken
+    if(mainWindowLoaded){
+      mainWindow.webContents.send('websocketStatus', `trying to connect to <strong>${url}</strong>`);
+    }
     ws = new WebSocket(url, {
       perMessageDeflate: false
     });
